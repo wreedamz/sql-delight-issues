@@ -1,0 +1,39 @@
+-- get business with location
+-- /Users/wreedamz/d/sql-delight-blank/src/main/sqldelight/com/foo/Student.sq: (7, 15): ')', ',', '.', <compound operator real>, <join operator real>, <table alias real>, AS, FOR, GROUP, HAVING, INDEXED, LIMIT, NOT, OFFSET, ORDER or WHERE expected, got '('
+-- 3    SELECT *
+-- 4    FROM business
+-- 5    WHERE EXISTS (
+-- 6        SELECT 1
+-- 7        FROM unnest(locations) as loc
+--                     ^
+-- 8        WHERE lower(loc) LIKE '%' || LOWER(:query) || '%'
+-- 9    )
+getAllBusinessesMatchingQuery0:
+SELECT *
+FROM business
+WHERE EXISTS (
+    SELECT 1
+    FROM unnest(locations) as loc
+    WHERE lower(loc) LIKE '%' || LOWER(:query) || '%'
+);
+
+getAllBusinessesMatchingQuery1:
+-- /Users/wreedamz/d/sql-delight-blank/src/main/sqldelight/com/foo/Student.sq: (25, 2): '(', <bind parameter real>, <column expr real>, <expr>, <extension expr real>, <literal value real>, EXISTS, RAISE or id expected, got 'EXISTS'
+-- 22    SELECT *
+-- 23    FROM business
+-- 24    WHERE LOWER(name) LIKE '%' || LOWER(:query) || '%'
+-- 25    OR EXISTS (
+--
+-- 26        SELECT 1
+-- 27        FROM unnest(locations) as loc
+-- 28        WHERE lower(loc) LIKE '%' || LOWER(:query) || '%'
+-- 29    )
+--
+SELECT *
+FROM business
+WHERE LOWER(name) LIKE '%' || LOWER(:query) || '%'
+OR EXISTS (
+    SELECT 1
+    FROM unnest(locations) as loc
+    WHERE lower(loc) LIKE '%' || LOWER(:query) || '%'
+)

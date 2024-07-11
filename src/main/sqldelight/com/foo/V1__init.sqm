@@ -1,11 +1,5 @@
-CREATE TABLE IF NOT EXISTS student(
-    studentId SERIAL PRIMARY KEY,
-    name TEXT NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS grade(
-    gradeId SERIAL PRIMARY KEY,
-    studentId SERIAL REFERENCES student(studentId),
-    grade INT NOT NULL,
-    date TIMESTAMP
+CREATE TABLE IF NOT EXISTS business(
+    businessId SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    locations TEXT[] NOT NULL
 );
