@@ -1,3 +1,26 @@
 -- get students
 getAllStudents:
 SELECT * FROM student;
+
+-- get latest grade for each student joining with the student
+-- doesn't work
+
+-- /Users/wreedamz/d/sql-delight-blank/src/main/sqldelight/com/foo/Student.sq: (8, 20): No table found with name grade
+-- 08    SELECT DISTINCT ON (grade.studentId) grade.*, student.*
+--                           ^^^^^
+-- 09    FROM grade
+-- 10    JOIN student USING (studentId)
+-- 11    ORDER BY grade.studentId, date
+--
+getLastestGradeForAllBroken:
+SELECT DISTINCT ON (grade.studentId) grade.*, student.*
+FROM grade
+JOIN student USING (studentId)
+ORDER BY grade.studentId, date;
+
+-- works fine
+getLastestGradeForAllWorking:
+SELECT DISTINCT ON (studentId) *
+FROM grade
+JOIN student USING (studentId)
+ORDER BY studentId, date;
