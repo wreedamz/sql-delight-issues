@@ -14,6 +14,7 @@ dependencies {
     implementation("org.postgresql:postgresql:42.7.3")
     implementation("com.zaxxer:HikariCP:5.1.0")
     implementation("app.cash.sqldelight:jdbc-driver:2.0.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0-RC.2")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
 }
@@ -31,6 +32,9 @@ sqldelight {
             packageName.set("com.foo.sqldelight")
             dialect("app.cash.sqldelight:postgresql-dialect:2.0.2")
             deriveSchemaFromMigrations.set(true)
+
+            migrationOutputDirectory = layout.buildDirectory.dir("resources/main/migrations")
+            migrationOutputFileFormat = ".sql"
         }
     }
 }

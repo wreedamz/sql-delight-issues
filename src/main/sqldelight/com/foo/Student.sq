@@ -1,3 +1,0 @@
--- get students
-getAllStudents:
-SELECT * FROM student;

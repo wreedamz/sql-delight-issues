@@ -1,0 +1,7 @@
+getAllTracker:
+SELECT * FROM sleepTracker;
+
+insertWakeUps:
+INSERT INTO sleepTracker (wakeUpTimes)
+VALUES (?);
+

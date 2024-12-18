@@ -1,11 +1,10 @@
-CREATE TABLE IF NOT EXISTS student(
-    studentId SERIAL PRIMARY KEY,
-    name TEXT NOT NULL
+import kotlin.collections.List;
+import kotlinx.datetime.Instant;
+
+CREATE TABLE IF NOT EXISTS sleepTracker(
+    patientId SERIAL PRIMARY KEY,
+    wakeUpTimes TIMESTAMP[] AS List<Instant> NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS grade(
-    gradeId SERIAL PRIMARY KEY,
-    studentId SERIAL REFERENCES student(studentId),
-    grade INT NOT NULL,
-    date TIMESTAMP
-);
+INSERT INTO sleepTracker (wakeUpTimes)
+VALUES ('{"2024-12-18 06:00:00", "2024-12-18 07:00:00", "2024-12-18 08:00:00"}');
